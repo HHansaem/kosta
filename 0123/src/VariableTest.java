@@ -17,6 +17,10 @@ public class VariableTest {
 		System.out.println(weight);
 		System.out.println(name);
 		
+		name = "한샘이";
+		
+		System.out.println(name);
+		
 	}
 
 }
