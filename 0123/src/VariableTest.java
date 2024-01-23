@@ -45,7 +45,7 @@ public class VariableTest {
 		float f = 1.6F;
 		double d = 1.6F;
 		double d2 = 3.23;
-		float f2 = (float)d2;  //강제 형변환
+		float f2 = (float)d2;  //강제 형변환 (cast)
 	}
 
 }
