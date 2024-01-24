@@ -21,6 +21,28 @@ public class ForTest4 {
 			}
 			System.out.println();
 		}
+		System.out.println();
+
+		
+		
+		
+		//1 2 3 A 
+		//4 5 B C   
+		//6 D E F  
+		
+		char ch2 = 'A'; 
+		int num2 = 1;
+		int cnt2 = 3;
+		
+		for(int i = 0; i < cnt2; i++) {
+			for(int j = cnt2; j > i; j--) {
+				System.out.print(String.format("%2d", num2++));
+			}
+			for(int j = 0; j < i + 1; j++) {
+				System.out.print(String.format("%2c", ch2++));
+			}
+			System.out.println();
+		}
 
 	}
 
