@@ -3,7 +3,7 @@ public class OperatorTest {
 
 	public static void main(String[] args) {
 		int n1 = 10, n2 = 10;
-		int r1, r2;
+		int r1, r2; 
 		
 		r1 = ++n1;  //증가 후 대입
 		r2 = n2++;  //대입 후 증가
