@@ -15,7 +15,6 @@ public class SwitchTest2 {
 		
 		switch (temp) {
 		case 10:
-		case 9:
 			grade = 'A';
 			break;
 		case 8:
