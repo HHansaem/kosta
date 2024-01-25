@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class ArrayExam6 {
+public class ArrayExam07 {
 	public static void main(String[] args) {
 		
 		//세 자리 이하의 정수를 차례로 입력 받다가 999가 입력되면 프로그램을 종료하고

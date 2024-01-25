@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class ArrayExam4 {
+public class ArrayExam05 {
 	public static void main(String[] args) {
 		
 		//6명의 몸무게를 입력받아 몸무게의 평균을 출력하는 프로그램을 작성하시오.

@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class ArrayExam5 {
+public class ArrayExam06 {
 	public static void main(String[] args) {
 		
 		//6개의 문자배열을 만들고 {'J', 'U', 'N', 'G', 'O', 'L'}으로 초기화한 후

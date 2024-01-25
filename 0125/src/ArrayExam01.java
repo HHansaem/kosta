@@ -1,4 +1,4 @@
-public class ArrayExam {
+public class ArrayExam01 {
 	public static void main(String[] args) {
 		
 		//cafe

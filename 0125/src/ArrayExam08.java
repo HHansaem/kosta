@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class ArrayExam7 {
+public class ArrayExam08 {
 	public static void main(String[] args) {
 		
 		//100개 이하의 정수를 입력받다가 0이 입력되면 그 때까지 입력된 정수 중 5의 배수의 개수와 

@@ -1,5 +1,5 @@
 
-public class ArrayExam2 {
+public class ArrayExam03 {
 	public static void main(String[] args) {
 		
 		// odd : 141   홀수합
