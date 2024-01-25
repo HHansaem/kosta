@@ -15,12 +15,12 @@ public class ArrayExam5 {
 		val = sc.next().charAt(0);  //전체 문자열 받아서 첫 번째 char 값 저장
 		
 		for(; i < carr.length; i++) {
-			if(carr[i] == val) {
+			if(carr[i] == val) {  //입력한 문자가 배열에 포함되어 있는지
 				break;
 			}
 		}
 		
-		if(i ==  carr.length) {
+		if(i ==  carr.length) {  //배열에 없는 문자열이면
 			System.out.println("none");
 		}else {
 			System.out.println(i + "번째");

@@ -19,8 +19,10 @@ public class ArrayExam3 {
 		}
 
 		for(int i = cnt - 3; i < cnt; i++) {
+//			if(cnt < 3) {
+//				for(int j = 0; )
+//			}
 			System.out.print(arr[i] + " ");
-//			if(cnt < 3)
 		}
 		
 	}
