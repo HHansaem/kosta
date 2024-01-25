@@ -9,6 +9,11 @@ public class Exercise4_10 {    //================>>>>> 못 푼 문제
 		int num = 12345;
 		int sum = 0;
 		
+		while(num > 0) {
+			sum += num % 10;  //일의 자리 얻어내서 더하기
+			num /= 10;  //몫을 구함으로써 사용한 일의 자리 숫자 없애서 저장
+		}
+		
 		System.out.println("sum="+sum);
 		
 	}
