@@ -25,6 +25,5 @@ public class Exercise5_10 {
 		System.out.println("src:"+src);
 		System.out.println("result:"+result);
 
-
 	}
 }
