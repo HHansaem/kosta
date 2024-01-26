@@ -12,15 +12,15 @@ public class ArrayExam2_05 {
 		int curr;
 		
 		pre = sc.nextInt();
-		System.out.print(ppre);
+		System.out.print(ppre + " " + pre);
 		
 		while(true){
 			curr = ppre - pre;
 			ppre = pre;
 			pre = curr;
-			System.out.print(" " + ppre);
+			System.out.print(" " + curr);
 			
-			if(ppre < 0) break;  //음수가 나올 때까지 출력
+			if(curr < 0) break;  //음수가 나올 때까지 출력
 		}
 		
 	}
