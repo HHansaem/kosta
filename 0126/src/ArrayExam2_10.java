@@ -13,9 +13,10 @@ public class ArrayExam2_10 {
 		arr[1] = sc.nextInt();
 		
 		for(int i = 2; i < arr.length; i++) {
-			arr[i] = (arr[i - 2] + arr[i - 1]) % 10;
+			arr[i] = (arr[i - 2] + arr[i - 1]) % 10;  //(전전항+전항)의 일의 자리 수를 배열에 넣어줌
 		}
 
+		//배열 출력
 		for(int i = 0; i < arr.length; i++) {
 			System.out.print(arr[i] +" ");
 		}
