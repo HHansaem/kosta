@@ -22,13 +22,24 @@ public class Exercise5_11 {
 		};
 		int[][] result = new int[score.length+1][score[0].length+1];
 		
+		//가로 합
 		for(int i=0; i < score.length;i++) {
 			for(int j=0; j < score[i].length;j++) {
 				result[i][j] = score[i][j];
-//				result[i][score.length] += score[i][j];
+				result[i][score[0].length] += score[i][j];
+			}
+			//720 (위 for문에서 +=로 넣어준 result를 다시 +=)
+			result[score.length][score[0].length] += result[i][score[0].length];  
+		}
+
+		//세로 합
+		for(int i=0; i < score[0].length;i++) {  //열
+			for(int j=0; j < score.length;j++) {  //행
+				result[score.length][i] += score[j][i];
 			}
 		}
 		
+		//출력
 		for(int i=0; i < result.length;i++) {
 			for(int j=0; j < result[i].length;j++) {
 				System.out.printf("%4d",result[i][j]);
