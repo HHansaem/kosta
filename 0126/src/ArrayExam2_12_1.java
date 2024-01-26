@@ -1,5 +1,5 @@
 
-public class ArrayExam2_12 {
+public class ArrayExam2_12_1 {
 	public static void main(String[] args) {
 		
 		//예제를 보고 적당한 배열을 선언한 후 1행의 1열과 3열 5열을 각각 1로 초기화하고

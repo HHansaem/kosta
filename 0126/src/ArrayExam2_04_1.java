@@ -1,5 +1,5 @@
 
-public class ArrayExam2_04 {
+public class ArrayExam2_04_1 {
 	public static void main(String[] args) {
 		
 		//피보나치 - 배열 사용
