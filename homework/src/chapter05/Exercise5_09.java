@@ -28,6 +28,7 @@ public class Exercise5_09 {
 				{'*','*','*','*','*'}
 		};
 		char[][] result = new char[star[0].length][star.length];  //90도 회전한 배열
+		
 		//회전 전 기존 배열 출력
 		for(int i=0; i < star.length;i++) {
 			for(int j=0; j < star[i].length;j++) {
