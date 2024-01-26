@@ -3,6 +3,7 @@ package chapter05;
 public class Exercise5_08 {
 	public static void main(String[] args) {
 
+		//ORM 카드 정답 체크 문제
 		//다음은 배열 answer에 담긴 데이터를 읽고 각 숫자의 개수를 세어서 개수만큼
 		//‘*’ 을 찍어서 그래프를 그리는 프로그램
 
@@ -10,10 +11,13 @@ public class Exercise5_08 {
 		int[] counter = new int[4];
 		
 		for(int i = 0; i < answer.length; i++) {
-//			counter[answer[i]]
+			//answer의 데이터가 1이면 counter의 0번째 방에 +1 해줘야 함
+			//answer의 데이터가 4면 counter의 3번째 방에 +1 해줘야 함 => 패턴 생성
+			counter[answer[i] - 1]++;
 		}
 		
 		for(int i = 0; i < counter.length; i++) {
+			//위에서 넣어준 counter배열의 데이터를 활용한 출력
 			System.out.print(counter[i]);
 			for(int  j = 0; j < counter[i]; j++) {
 				System.out.print("*");
@@ -21,4 +25,5 @@ public class Exercise5_08 {
 			System.out.println();
 		}
 	}
+	
 }
