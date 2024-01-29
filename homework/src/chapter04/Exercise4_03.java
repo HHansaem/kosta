@@ -15,7 +15,7 @@ public class Exercise4_03 {
 			for(int j = 1; j <= i; j++) {
 				result += j;
 			}
-//			System.out.println(result);
+			System.out.println(result);
 		}
 		System.out.println(result);
 		
