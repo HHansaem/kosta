@@ -31,7 +31,7 @@ public class Exercise4_14 {
 				break;
 			}
 		
-		} while(true); // 무한반복문 }
+		} while(true); // 무한반복문
 	
 	}
 }

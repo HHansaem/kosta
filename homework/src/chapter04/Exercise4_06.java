@@ -10,9 +10,10 @@ public class Exercise4_06 {
 			for(int j = 1; j <= 6; j++) {
 				if((i + j) == 6) {
 					cnt++;
+					System.out.println("(" + i + "," + j +")");
 				}
 			}
 		}
-		System.out.println("눈의 합이 6이 되는 모든 경우의 수는 " + cnt);
+		System.out.println("눈의 합이 6이 되는 모든 경우의 수는 " + cnt + "개");
 	}
 }
