@@ -12,7 +12,7 @@ public class ParameterTest1 {
 	public static void plusData(Data d) {
 		d.n++;
 		System.out.println(d.n);
-	}
+	} 
 	
 	public static void main(String[] args) {
 		Data data = new Data();
