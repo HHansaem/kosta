@@ -5,6 +5,12 @@ class Person {  //class : 기능을 포함한 타입
 	String info() {
 		return "이름:" + name + ", 나이:" + age;
 	}
+	
+	Person() {}  //기본 생성자
+	Person(int a, String n) {  //생성자 (new할때만 호출)
+		age = a;
+		name = n;
+	}
 }
 
 public class ClassTest1 {
@@ -16,6 +22,8 @@ public class ClassTest1 {
 		Person p2 = new Person();
 		p2.age = 20;
 		p2.name = "고길동";
+		
+		Person p4 = new Person(25, "홍길동");
 		
 		System.out.println(p1.info());
 		System.out.println(p2.info());
