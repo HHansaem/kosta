@@ -2,16 +2,16 @@ class Account {
 	String id, name;
 	int balance;
 	
+	String info() {
+		return "계좌번호:" + id + ", 이름:" + name + ", 잔액:" + balance; 
+	}
+
 	void deposit(int money) {
 		balance += money;
 	}
 	
 	void withdraw(int money) {
 		balance -= money;
-	}
-	
-	String info() {
-		return "계좌번호:" + id + ", 이름:" + name + ", 잔액:" + balance; 
 	}
 }
 
