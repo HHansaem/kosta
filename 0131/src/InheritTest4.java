@@ -1,7 +1,7 @@
 class Parent {
 	int data1;
 	
-	Parent() {}
+	Parent() {}  //기본 생성자
 	Parent(int data1){
 		this.data1 = data1;
 	}
@@ -21,7 +21,7 @@ class Child extends Parent {
 	}
 	
 	@Override
-	void printData() {
+	void printData() {  //오버라이딩은 파라미터도 같아야 한다 (오버로딩은 파라미터 달라야 함)
 		System.out.println(data1 + "," + data2);
 	}
 }
