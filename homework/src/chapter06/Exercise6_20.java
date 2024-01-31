@@ -9,7 +9,7 @@ public class Exercise6_20 {
 	//	 반환타입 : int[]
 	//	 매개변수 : int[] arr - 정수값이 담긴 배열
 	
-	static int[] shuffle(int[] arr) {  //이거 static 안 붙이면 오류 나는데 이유를 모르겠음
+	static int[] shuffle(int[] arr) {  //static method
 		for(int i = 0; i < 100; i++) {
 			int rand1 = (int) (Math.random() * arr.length);
 			int rand2 = (int) (Math.random() * arr.length);
@@ -24,6 +24,7 @@ public class Exercise6_20 {
 		int[] original = {1,2,3,4,5,6,7,8,9};
 		System.out.println(java.util.Arrays.toString(original));
 		int[] result = shuffle(original);  
+		//=> static인 main에서 바로 호출하는 method이기 때문에 static method로 작성한다.
 		System.out.println(java.util.Arrays.toString(result));
 	}
 }
