@@ -25,6 +25,7 @@ public class Exercise6_20 {
 		System.out.println(java.util.Arrays.toString(original));
 		int[] result = shuffle(original);  
 		//=> static인 main에서 바로 호출하는 method이기 때문에 static method로 작성한다.
+		//객체 생성 없이 바로 호출하니까!
 		System.out.println(java.util.Arrays.toString(result));
 	}
 }
