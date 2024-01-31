@@ -8,6 +8,8 @@ public class Exercise6_07 {
 		MyPoint p = new MyPoint(1,1);
 		// p(1,1)과 (2,2)의 거리를 구한다.
 		System.out.println(p.getDistance(2,2));
+		//매개변수 타입 다르게 오버로딩
+		System.out.println(p.getDistance(new MyPoint(2, 2)));  
 	}
 
 }
@@ -20,8 +22,12 @@ class MyPoint {
 		this.x = x;
 		this.y = y;
 	}
-
+	
 	double getDistance(int x1, int y1) {
 		return Math.sqrt((x-x1)*(x-x1) + (y-y1)*(y-y1));
+	}
+	
+	double getDistance(MyPoint m) {  //오버로딩
+		return Math.sqrt((x - m.x)*(x - m.x) + (y - m.y)*(y - m.y));
 	}
 }

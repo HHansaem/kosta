@@ -2,7 +2,7 @@ package chapter06;
 
 public class Exercise6_08 {
 
-	//다음의 코드에 정의된 변수들을 종류별로 구분해서 적으시오. 
+	//다음의 코드에 정의된 변수들을 종류별로 구분해서 적으시오. => 다음 문제부터는 쭉 객관식
 
 	public static void main(String[] args) {
 		PlayingCard card = new PlayingCard(1,1);

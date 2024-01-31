@@ -7,17 +7,13 @@ class Student {
 	int kor;  //국어점수
 	int eng;  //영어점수
 	int math;  //수학점수
-	int sum = 0;
-	float avg;
 
 	int getTotal() {
-		sum = kor + eng + math;
-		return sum;
+		return kor + eng + math;
 	}
 
 	float getAverage() {
-		avg = Math.round((sum / 3f) * 10) / 10f;
-		return avg;
+		return Math.round((getTotal() / 3f) * 10) / 10f;
 	}
 	
 	//여기는 Exercise6_05 문제 풀이
@@ -26,7 +22,7 @@ class Student {
 		this.name = name;
 		this.ban = ban;
 		this.no = no;
-		this.kor = kor;
+		this.kor = kor; 
 		this.eng = eng;
 		this.math = math;
 	}

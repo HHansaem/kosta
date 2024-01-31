@@ -8,6 +8,7 @@ class SutdaCard {
 		num =  1;
 		isKwang = true;
 	}
+	
 	SutdaCard(int num, boolean isKwang){
 		this.num = num;
 		this.isKwang = isKwang;
