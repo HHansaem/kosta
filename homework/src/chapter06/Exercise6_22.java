@@ -12,16 +12,27 @@ public class Exercise6_22 {
 	//	 매개변수 : String str - 검사할 문자열
 	//	[Hint] String클래스의 charAt(int i)메서드를 사용하면 문자열의 i번째 위치한 문자를 얻을 수 있다.
 
-	boolean isNumber(String str) {
-		for(int i = 0; i < str.length(); i++) {
-//			if(str.charAt(i))
+	static boolean isNumber(String str) {  //이거 static 안 붙이면 오류 나는데 이유를 모르겠음
+		if(str.length() > 0) {
+			for(int i = 0; i < str.length(); i++) {
+				if(str.charAt(i) >= '0' && str.charAt(i) <= '9') {
+					continue;
+				}else {
+					return false;
+				}
+			}
+		}else {
+			return false;
 		}
+		return true;
 	}
 	
 	public static void main(String[] args) {
 		String str = "123";
 		System.out.println(str+"는 숫자입니까? "+isNumber(str));
 		str = "1234o";
+		System.out.println(str+"는 숫자입니까? "+isNumber(str));
+		str = "";
 		System.out.println(str+"는 숫자입니까? "+isNumber(str));
 	}
 }
