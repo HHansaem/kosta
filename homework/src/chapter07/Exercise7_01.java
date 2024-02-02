@@ -5,11 +5,12 @@ class SutdaDeck {
 	SutdaCard[] cards = new SutdaCard[CARD_NUM];
 
 	SutdaDeck() {
-		for(int i = 0; i < CARD_NUM; i++) {
-			if(i == 0 || i == 2 || i == 7) {
+		for(int i = 0; i < CARD_NUM; i++) {  //cards에 값 넣어줄 반복문
+			if(i == 0 || i == 2 || i == 7) {  //1, 3, 8번째 카드는 isKwang을 true로 넣어줌
+				//1~10까지의 숫자가 쌍으로 있으니 일의 자리 수를 이용
 				cards[i] = new SutdaCard(i % 10 + 1, true);
 			} else {
-				cards[i] = new SutdaCard(i % 10 + 1, false);
+				cards[i] = new SutdaCard(i % 10 + 1, false); 
 			}
 		}
 		
@@ -25,8 +26,8 @@ class SutdaDeck {
 
 	//배열 cards에 담긴 카드의 위치를 뒤섞는다.(Math.random()사용)
 	void shuffle() {
-		for(int i = 0; i < 500; i++) {
-			int idx1 = (int) (Math.random() * CARD_NUM);
+		for(int i = 0; i < 500; i++) {  //500번 섞기
+			int idx1 = (int) (Math.random() * CARD_NUM);  //Math.random() => 0~1사이의 랜덤값
 			int idx2 = (int) (Math.random() * CARD_NUM);
 			SutdaCard temp = cards[idx1];
 			cards[idx1] = cards[idx2];
