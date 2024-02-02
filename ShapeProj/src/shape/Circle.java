@@ -7,12 +7,14 @@ public class Circle extends Shape {
 	
 	public Circle() {}
 	
-	public Circle(int x, int y, int radius) {
+	public Circle(String color, int x, int y, int radius) {
+		super(color);
 		center = new Point(x, y);
 		this.radius = radius;
 	}
 
-	public Circle(Point point, int radius) {
+	public Circle(String color, Point point, int radius) {
+		super(color);
 		this.center = point;
 		this.radius = radius;
 	}
@@ -27,7 +29,7 @@ public class Circle extends Shape {
 	
 	@Override
 	public String toString() {
-		return "[원-중심점:" + getCenter() + ", 반지름:" + getRadius() + "]";
+		return "[원-색:" + color + ", 중심점:" + getCenter() + ", 반지름:" + getRadius() + "]";
 	}
 
 }

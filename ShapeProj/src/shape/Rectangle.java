@@ -8,13 +8,15 @@ public class Rectangle extends Shape {
 	
 	public Rectangle() {}
 	
-	public Rectangle(int x, int y, int width, int height) {
+	public Rectangle(String color, int x, int y, int width, int height) {
+		super(color);
 		startPos = new Point(x, y);
 		this.width = width;
 		this.height = height;
 	}
 	
-	public Rectangle(Point startPos, int width, int height) {
+	public Rectangle(String color, Point startPos, int width, int height) {
+		super(color);
 		this.startPos = startPos;
 		this.width = width;
 		this.height = height;
@@ -34,7 +36,7 @@ public class Rectangle extends Shape {
 
 	@Override
 	public String toString() {
-		return "[사각형-시작점" + getStartPos() + ", 가로:" + getWidth() + ", 세로:" + getHeight() + "]";
+		return "[사각형-색:" + color + ", 시작점" + getStartPos() + ", 가로:" + getWidth() + ", 세로:" + getHeight() + "]";
 	}
 	
 }
