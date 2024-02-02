@@ -12,6 +12,15 @@ class SutdaDeck {
 				cards[i] = new SutdaCard(i % 10 + 1, false);
 			}
 		}
+		
+		//강사님 코드
+//		for(int i = 0; i < 10; i++) {
+//			cards[i] = new SutdaCard(i + 1, false);
+//			if(i == 0 || i == 2 || i == 7) {
+//				cards[i] = new SutdaCard(i + 1, true);
+//			}
+//				cards[i + 10] = new SutdaCard(i + 1, false);
+//		}
 	}
 
 	//배열 cards에 담긴 카드의 위치를 뒤섞는다.(Math.random()사용)
@@ -27,7 +36,10 @@ class SutdaDeck {
 
 	//배열 cards에서 지정된 위치의 SutdaCard를 반환한다.
 	SutdaCard pick(int index) {
-		return cards[index];
+		if(index >= 0 && index < 19) {
+			return cards[index];
+		}
+		return null;
 	}
 
 	//배열 cards에서 임의의 위치의 SutdaCard를 반환한다.(Math.random()사용)
@@ -35,8 +47,8 @@ class SutdaDeck {
 		int rand = (int) (Math.random() * CARD_NUM);
 		return cards[rand];
 	}
-
 }
+
 class SutdaCard {
 	int num;
 	boolean isKwang;
