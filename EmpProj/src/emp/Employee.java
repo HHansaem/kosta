@@ -12,12 +12,6 @@ public class Employee {
 		this.name = name;
 	}
 
-	Employee(String id, String name, int pay){
-		this.id = id;
-		this.name = name;
-		this.pay = pay;
-	}
-	
 	public int getPay() {
 		return pay;
 	}

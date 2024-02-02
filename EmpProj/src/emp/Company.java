@@ -11,7 +11,7 @@ public class Company {
 	
 	void allEmployeeInfo() {
 		for(int i = 0; i < cnt; i++) {
-			System.out.println(emps[i].toString());
+			System.out.println(emps[i]);
 		}
 	}
 	
