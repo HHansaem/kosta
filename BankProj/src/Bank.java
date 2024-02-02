@@ -21,8 +21,34 @@ public class Bank {
 		return sc.nextInt();
 	}
 	
-	void makeAccount() {
+	void selMenu() {
 		System.out.println("\n[계좌개설]");
+		System.out.println("1.일반계좌");
+		System.out.println("2.특수계좌");
+		System.out.print("선택>> ");
+		int sel = sc.nextInt();
+		switch(sel) {
+		case 1: makeAccount(); break;
+		case 2: makeSpecialAccount(); break;
+		}
+	}
+	
+	void makeSpecialAccount() {
+		System.out.println("\n[특수계좌개설]");
+		System.out.print("계좌번호: ");
+		String id = sc.next();
+		System.out.print("이름: ");
+		String name = sc.next();
+		System.out.print("입금액: ");
+		int money = sc.nextInt();
+		System.out.print("등급(VIP, Gold, Silver, Normal): ");
+		String grade = sc.next();
+
+		accs[cnt++] = new SpecialAccount(id, name, money, grade);  //upcasting
+	}
+	
+	void makeAccount() {
+		System.out.println("\n[일반계좌개설]");
 		System.out.print("계좌번호: ");
 		String id = sc.next();
 		System.out.print("이름: ");
@@ -181,7 +207,7 @@ public class Bank {
 			int sel = bank.menu();
 			if(sel == 0) break;
 			switch(sel) {
-			case 1: bank.makeAccount(); break;
+			case 1: bank.selMenu(); break;
 			case 2: bank.deposit(); break;
 			case 3: bank.withdraw(); break;
 			case 4: bank.accountInfo(); break;
