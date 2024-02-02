@@ -5,13 +5,14 @@ public class Company {
 	Employee emps[] = new Employee[50];
 	int cnt;
 	
-	void addEmployee(Employee emp) {
+	void addEmployee(Employee emp) {  //Employee emp = new Permanent, Sales, PartTime("",""..);(자식들 업캐스팅해서 부모 타입으로 설정)
 		emps[cnt++] = emp;
 	}
 	
 	void allEmployeeInfo() {
 		for(int i = 0; i < cnt; i++) {
-			System.out.println(emps[i]);
+			System.out.println(emps[i].toString());  //=>toString() 생략 가능
+			//자식들을 new해서 Employee(부모)타입으로 설정했으니, new한 자식들의 toString()이 실행됨
 		}
 	}
 	
@@ -19,6 +20,7 @@ public class Company {
 		int totalPay = 0;
 		for(int i = 0; i < cnt; i++) {
 			totalPay += emps[i].getPay();
+			//자식들을 new해서 Employee(부모)타입으로 설정했으니, new한 자식들의 getPay()가 실행됨
 		}
 		return totalPay;
 	}

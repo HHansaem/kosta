@@ -13,7 +13,7 @@ public class Employee {
 	}
 
 	public int getPay() {
-		return pay;
+		return 0;
 	}
 	
 	@Override
