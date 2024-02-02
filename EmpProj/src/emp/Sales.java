@@ -5,7 +5,7 @@ public class Sales extends Permanent{
 	
 	public Sales() {}
 	
-	Sales(String id, String name, int salary, int bonus){
+	public Sales(String id, String name, int salary, int bonus){
 		super(id, name, salary);
 		this.bonus = bonus;
 	}

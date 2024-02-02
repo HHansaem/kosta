@@ -1,4 +1,7 @@
-package emp;
+import emp.Employee;
+import emp.PartTime;
+import emp.Permanent;
+import emp.Sales;
 
 public class Company {
 	

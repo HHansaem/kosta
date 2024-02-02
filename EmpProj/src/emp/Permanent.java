@@ -5,7 +5,7 @@ public class Permanent extends Employee {
 	
 	public Permanent() {}
 	
-	Permanent(String id, String name, int salary){
+	public Permanent(String id, String name, int salary){
 		super(id, name);
 		this.salary = salary;
 	}
