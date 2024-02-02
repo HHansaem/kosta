@@ -34,9 +34,14 @@ public class Rectangle extends Shape {
 		return height;
 	}
 
+//	@Override
+//	public String toString() {
+//		return "[사각형-색:" + color + ", 시작점" + getStartPos() + ", 가로:" + getWidth() + ", 세로:" + getHeight() + "]";
+//	}
+
 	@Override
-	public String toString() {
-		return "[사각형-색:" + color + ", 시작점" + getStartPos() + ", 가로:" + getWidth() + ", 세로:" + getHeight() + "]";
+	public void draw() {
+		System.out.println("[사각형-색:" + color + ", 시작점" + getStartPos() + ", 가로:" + getWidth() + ", 세로:" + getHeight() + "]");
 	}
 	
 }

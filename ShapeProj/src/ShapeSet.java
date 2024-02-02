@@ -11,7 +11,7 @@ public class ShapeSet {
 
 	public void drawAllShapes() {
 		for(int i = 0; i < cnt; i++) {
-			System.out.println(shapes[i].toString());
+			shapes[i].draw();
 		}
 	}
 }

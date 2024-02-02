@@ -33,8 +33,14 @@ public class Triangle extends Shape {
 		return p3;
 	}
 
+//	@Override
+//	public String toString() {
+//		return "[삼각형-색:" + color + ", 점1" + getP1() + ", 점2" + getP2() + ", 점3" + getP3() + "]";
+//	}
+
 	@Override
-	public String toString() {
-		return "[삼각형-색:" + color + ", 점1" + getP1() + ", 점2" + getP2() + ", 점3" + getP3() + "]";
+	public void draw() {
+		System.out.println("[삼각형-색:" + color + ", 점1" + getP1() + ", 점2" + getP2() + ", 점3" + getP3() + "]");
+		
 	}
 }

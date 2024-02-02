@@ -27,9 +27,14 @@ public class Circle extends Shape {
 		return radius;
 	}
 	
+//	@Override
+//	public String toString() {
+//		return "[원-색:" + color + ", 중심점:" + getCenter() + ", 반지름:" + getRadius() + "]";
+//	}
+
 	@Override
-	public String toString() {
-		return "[원-색:" + color + ", 중심점:" + getCenter() + ", 반지름:" + getRadius() + "]";
+	public void draw() {
+		System.out.println("[원-색:" + color + ", 중심점:" + getCenter() + ", 반지름:" + getRadius() + "]");
 	}
 
 }
