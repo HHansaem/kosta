@@ -45,13 +45,22 @@ class Point {
 class Circle extends Shape {
 	double r;
 	
+//	public Circle(double r) {
+//		this.r = r;
+//	}
+
 	public Circle(double r) {
-		this.r = r;
+		this(new Point(0,0), r);  //Circle(Point p, double r)를 호출
 	}
 	
+	public Circle(Point p, double r) {
+		super(p);
+		this.r = r;
+	}	
+
 	@Override
 	double calcArea() {
-		return r * r * 3.14;
+		return r * r * Math.PI;  //Math class 사용해 PI값 얻기
 	}
 }
 
@@ -59,7 +68,17 @@ class Rectangle extends Shape {
 	int width;
 	int height;
 	
+//	public Rectangle(int width, int height) {
+//		this.width = width;
+//		this.height = height;
+//	}
+	
 	public Rectangle(int width, int height) {
+		this(new Point(0,0), width, height);
+	}
+	
+	public Rectangle(Point p, int width, int height) {
+		super(p);
 		this.width = width;
 		this.height = height;
 	}
@@ -79,12 +98,16 @@ class Rectangle extends Shape {
 
 public class Exercise7_22 {
 	
-//	double sumArea(Shape[] arr) {
-//		
-//	}
+	static double sumArea(Shape[] arr) {
+		double sum = 0;
+		for(int i = 0; i < arr.length; i++) {
+			sum += arr[i].calcArea();
+		}
+		return sum;
+	}
 	
 	public static void main(String[] args) {
 		Shape[] arr = {new Circle(5.0), new Rectangle(3,4), new Circle(1)};
-//		System.out.println("면적의 합:"+sumArea(arr));
+		System.out.println("면적의 합:"+sumArea(arr));
 	}
 }
