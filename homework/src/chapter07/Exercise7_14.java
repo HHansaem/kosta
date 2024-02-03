@@ -11,7 +11,6 @@ class SutdaCard2 {
 		this.isKwang = isKwang;
 	}
 	public String toString() {
-		System.out.println("테스트");
 		return num + ( isKwang ? "K":"");
 	}
 }
