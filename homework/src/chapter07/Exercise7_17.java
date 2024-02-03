@@ -23,6 +23,6 @@ class Dropship extends Unit { // 수송선 int x, y; // 현재 위치 void move(
 
 public class Exercise7_17 {
 	public static void main(String[] args) {
-		
+		System.out.println("테스트");
 	}
 }
