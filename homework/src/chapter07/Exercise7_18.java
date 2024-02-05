@@ -15,10 +15,11 @@ public class Exercise7_18 {
 	//객체 타입을 확인하는 연산자
 	//형변환 가능 여부를 확인하며 true / false로 결과를 반환
 	//주로 상속 관계에서 부모객체인지 자식객체인지 확인하는 데 사용
-	//"객체 instanceOf 클래스" 를 선언함으로써 사용
+	//(true인 경우 : robot이 DanceRobot클래스거나 DanceRobot클래스의 자식일 경우)
+	//(false인 경우 : robot이 DanceRobot클래스의 부모일 경우
 	static void action(Robot robot) {
-		if(robot instanceof DanceRobot) {  //DanceRobot으로 형변환이 가능하면
-			((DanceRobot) robot).dance();  //형변환 후 메서드 호출
+		if(robot instanceof DanceRobot) {  //DanceRobot으로 형변환이 가능하면 true
+			((DanceRobot) robot).dance();  //형변환 후 메서드 호출(자식에만 있는 메서드 사용하려면 다운캐스탱 해야 함)
 		} else if(robot instanceof SingRobot) {
 			((SingRobot) robot).sing();
 		} else if(robot instanceof DrawRobot) {
