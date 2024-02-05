@@ -80,7 +80,7 @@ class Buyer {
 		System.out.println("남은 금액:" + money);
 	} 
 }
-
+ 
 class Product1 {
 	int price; // 제품의 가격
 
