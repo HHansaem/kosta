@@ -3,13 +3,16 @@ package chapter07;
 class SutdaCard2 {
 	final int num;
 	final boolean isKwang;
+	
 	SutdaCard2() {
 		this(1, true);
 	}
+	
 	SutdaCard2(int num, boolean isKwang) {
 		this.num = num;
 		this.isKwang = isKwang;
 	}
+	
 	public String toString() {
 		return num + ( isKwang ? "K":"");
 	}
