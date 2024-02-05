@@ -23,7 +23,7 @@ class MyTv2 {
 		if(channel > MAX_CHANNEL || channel < MIN_CHANNEL) return;  //범위 외 숫자일 때
 		//처음엔 0이 들어감. 
 		//받은 값을 아랫줄에서 넣어줌으로써 다음에 이 메서드를 다시 호출했을 때 아랫줄에서 넣었던 값이 prevChannel에 담기도록 설정
-		prevChannel = this.channel;  
+		this.prevChannel = this.channel;  
 		this.channel = channel;  //매개변수로 받은 값을 맴버변수에 넣어주기
 	}
 	public int getVolume() {
@@ -35,6 +35,9 @@ class MyTv2 {
 
 	public void gotoPrevChannel() {
 		setChannel(prevChannel);
+//		int tempChannel = channel;
+//		channel = prevChannel;
+//		prevChannel = tempChannel;
 	}
 }
 
