@@ -52,9 +52,11 @@ class Buyer {
 		if(i >= cart.length) {
 			Product1[] newCart = new Product1[cart.length * 2];  //2배 큰 새 배열 생성
 			//newCart = cart;  -> 배열의 레퍼런스만 복사되어 두 배열이 같은 메모리 참조(한 배열 수정시 다른 배열도 동일하게 반영됨)
-			for(int idx = 0; idx < cart.length; idx++) {  //기존 장바구니 내용 복사
-				newCart[idx] = cart[idx];
-			}
+//			for(int idx = 0; idx < cart.length; idx++) {  //기존 장바구니 내용 복사
+//				newCart[idx] = cart[idx];
+//			}
+			System.arraycopy(cart, 0, newCart, 0, cart.length);  //기존 장바구니 내용 복사
+			// => cart배열의 0번째부터 cart.length만큼 복사해서 newCart배열의 0번째부터 넣어줌
 			cart = newCart;  //새로운 배열을 기존 배열로
 		}
 		cart[i++] = prod;
