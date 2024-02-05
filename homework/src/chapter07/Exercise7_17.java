@@ -7,7 +7,6 @@ abstract class Unit {
 	int x, y;
 	abstract void move(int x, int y);  //추상클래스
 	// => (각 유닛의 move메서드가 서로 다르게 동작하기 때문에 서브클래스에 반드시 구현해야 하는 메서드를 명시하기 위해 추상클래스로 정의해줌.)
-	
 	void stop() { /* 현재 위치에 정지 */ }  //stop 메서드는 모든 유닛이 공통적으로 동일하게 동작
 }
 
@@ -16,7 +15,6 @@ class Marine extends Unit { // 보병
 	void move(int x, int y) { 
 		System.out.println("(" + x + "," + y + ")까지 걸어간다.");
 	}
-	
 	void stimPack() { /* 스팀팩을 사용한다.*/}
 }
 
@@ -25,7 +23,6 @@ class Tank extends Unit { // 탱크
 	void move(int x, int y) { 
 		System.out.println("(" + x + "," + y + ")까지 굴러간다.");
 	}
-	
 	void changeMode() { /* 공격모드를 변환한다. */}
 }
 
@@ -34,7 +31,6 @@ class Dropship extends Unit { // 수송선
 	void move(int x, int y) { 
 		System.out.println("(" + x + "," + y + ")까지 헤엄쳐간다.");
 	}
-	
 	void load() { /* 선택된 대상을 태운다.*/ }
 	void unload() { /* 선택된 대상을 내린다.*/ }
 } 
