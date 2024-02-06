@@ -52,14 +52,14 @@ public class SpecialAccount extends Account {
 		this.grade = grade;
 	}
 
-	public static void main(String[] args) {
-		SpecialAccount sacc = new SpecialAccount("1001", "홍길동", 100000, "vip");
-		System.out.println(sacc.info());
-		sacc.deposit(10000);
-		System.out.println(sacc.info());
-		sacc.withdraw(5000);
-		System.out.println(sacc.info());
-	}
+//	public static void main(String[] args) {
+//		SpecialAccount sacc = new SpecialAccount("1001", "홍길동", 100000, "vip");
+//		System.out.println(sacc.info());
+//		sacc.deposit(10000);
+//		System.out.println(sacc.info());
+//		sacc.withdraw(5000);
+//		System.out.println(sacc.info());
+//	}
 }
 
 //계좌번호:1001, 이름:홍길동, 잔액:100000, 등급:VIP
