@@ -21,14 +21,7 @@ public class Bank {
 		System.out.println("5.전체계좌조회");
 		System.out.println("6.계좌이체");
 		System.out.print("선택>> ");
-		int sel = 0;
-		try {
-			sel = Integer.parseInt(sc.nextLine());
-		} catch (NumberFormatException e) {
-			System.out.println("입력이 바르지 않습니다.");
-			sel = 9;  //다시 반복되게
-		}
-		return sel;
+		return Integer.parseInt(sc.nextLine());
 	}
 	
 	void selMenu() {
@@ -36,7 +29,7 @@ public class Bank {
 		System.out.println("1.일반계좌");
 		System.out.println("2.특수계좌");
 		System.out.print("선택>> ");
-		int sel = sc.nextInt();
+		int sel = Integer.parseInt(sc.nextLine());
 		switch(sel) {
 		case 1: makeAccount(); break;
 		case 2: makeSpecialAccount(); break;
@@ -214,15 +207,19 @@ public class Bank {
 		Bank bank = new Bank();
 		System.out.println("어서오세용");
 		while(true) {
-			int sel = bank.menu();
-			if(sel == 0) break;
-			switch(sel) {
-			case 1: bank.selMenu(); break;
-			case 2: bank.deposit(); break;
-			case 3: bank.withdraw(); break;
-			case 4: bank.accountInfo(); break;
-			case 5: bank.allAccountInfo(); break;
-			case 6: bank.transfer(); break;
+			try {
+				int sel = bank.menu();
+				if(sel == 0) break;
+				switch(sel) {
+				case 1: bank.selMenu(); break;
+				case 2: bank.deposit(); break;
+				case 3: bank.withdraw(); break;
+				case 4: bank.accountInfo(); break;
+				case 5: bank.allAccountInfo(); break;
+				case 6: bank.transfer(); break;
+				}
+			}catch (NumberFormatException e) {
+				System.out.println("입력 형식이 바르지 않습니다");
 			}
 		}
 	}
