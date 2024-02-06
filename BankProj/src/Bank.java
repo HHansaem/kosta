@@ -21,7 +21,14 @@ public class Bank {
 		System.out.println("5.전체계좌조회");
 		System.out.println("6.계좌이체");
 		System.out.print("선택>> ");
-		return sc.nextInt();
+		int sel = 0;
+		try {
+			sel = Integer.parseInt(sc.nextLine());
+		} catch (NumberFormatException e) {
+			System.out.println("입력이 바르지 않습니다.");
+			sel = 9;  //다시 반복되게
+		}
+		return sel;
 	}
 	
 	void selMenu() {
