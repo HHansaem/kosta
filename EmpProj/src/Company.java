@@ -2,6 +2,7 @@ import emp.Employee;
 import emp.PartTime;
 import emp.Permanent;
 import emp.Sales;
+import emp.iBusinessTrip;
 
 public class Company {
 	
@@ -28,6 +29,10 @@ public class Company {
 		return totalPay;
 	}
 	
+	void regBusinessTrip(iBusinessTrip emp, int day) {  //iBusinessTip 인터페이스를 상속한 클래스만 해당 메서드를 호출할 수 있다.(상속하지 않은 클래스가 사용하면 에러 나도록)
+		emp.goBusinessTrip(day);
+	}
+	
 	public static void main(String[] args) {
 		Company com = new Company();
 		Permanent emp1 = new Permanent("100", "홍길동", 1000000);
@@ -36,6 +41,9 @@ public class Company {
 		com.addEmployee(emp1);
 		com.addEmployee(emp2);
 		com.addEmployee(emp3);
+//		com.regBusinessTrip(emp1, 2);  //error
+		com.regBusinessTrip(emp2, 2);
+		com.regBusinessTrip(emp3, 2);
 		com.allEmployeeInfo();
 		System.out.println("총 급여액: " + com.getTotalPay());
 	}

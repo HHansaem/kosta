@@ -1,6 +1,6 @@
 package emp;
 
-public class Sales extends Permanent{
+public class Sales extends Permanent implements iBusinessTrip {
 	int bonus;
 	
 	public Sales() {}
@@ -13,5 +13,10 @@ public class Sales extends Permanent{
 	@Override
 	public int getPay() {
 		return salary + bonus;
+	}
+
+	@Override
+	public void goBusinessTrip(int day) {
+		bonus += (day * 100000);
 	}
 }
