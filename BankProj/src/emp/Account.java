@@ -1,10 +1,43 @@
+package emp;
 
 public class Account {
 	
 	String id;
 	String name;
-	int balance;
+	public int balance;
 	public String money;
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getBalance() {
+		return balance;
+	}
+
+	public void setBalance(int balance) {
+		this.balance = balance;
+	}
+
+	public String getMoney() {
+		return money;
+	}
+
+	public void setMoney(String money) {
+		this.money = money;
+	}
 	
 	Account() {}
 	
@@ -13,20 +46,20 @@ public class Account {
 		this.name = name;
 	}
 	
-	Account(String id, String name, int balance){
+	public Account(String id, String name, int balance){
 		this(id, name);
 		this.balance = balance;
 	}
 	
-	void deposit(int money) {
+	public void deposit(int money) {
 		if(money > 0) balance += money;
 	}
 	
-	void withdraw(int money) {
+	public void withdraw(int money) {
 		if(money <= balance) balance -= money;
 	}
 	
-	String info() {
+	public String info() {
 //		return "계좌번호:" + id + ", 이름:" + name + ", 잔액:" + balance; 
 		return String.format("계좌번호:%s, 이름:%s, 잔액:%d", id, name, balance); 
 	}
