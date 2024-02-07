@@ -1,6 +1,6 @@
 package pac;
 
-public class Person {
+public class Person implements Cloneable {
 	private int age;
 	private String name;
 	
@@ -42,8 +42,20 @@ public class Person {
 		return String.format("이름:%s, 나이:%d", name, age);
 	}
 	
+//	@Override
+//	public Object clone() {
+//		return new Person(name, age);
+//	}
+	
 	@Override
-	public Object clone() {
-		return new Person(name, age);
+	public Object clone() {  //implements Cloneable 필요
+		Object obj = null;
+		try {
+			obj = super.clone();
+		} catch (CloneNotSupportedException e) {
+			e.printStackTrace();
+		}
+		return obj;
 	}
+	
 }
