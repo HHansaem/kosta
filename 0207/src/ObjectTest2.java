@@ -13,6 +13,16 @@ class Complex {  //복소수 클래스
 		Complex complex = (Complex) obj;
 		return real == complex.real && imaginary == complex.imaginary;
 	}
+	
+	@Override
+		public int hashCode() {
+			return real*2 + imaginary*3;
+		}
+	
+	@Override
+		public String toString() {
+			return real + "+" + imaginary + "i";
+		}
 }
 
 public class ObjectTest2 {
