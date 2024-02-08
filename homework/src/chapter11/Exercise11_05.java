@@ -36,6 +36,7 @@ class Student implements Comparable<Student> {
 	public int compareTo(Student o) {
 		return name.compareTo(o.name);
 	}
+	
 }
 
 public class Exercise11_05 {
