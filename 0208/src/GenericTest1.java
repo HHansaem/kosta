@@ -32,6 +32,7 @@ public class GenericTest1 {
 //		MyArray my2 = new MyArray();
 		MyArray<Person> my2 = new MyArray<>();
 		my2.setData(0, new Person("hong", 20));
-		Person p = my2.getData(0);  //(제네릭 안 쓰면)Person타입이 아니라 Object타입이라 다운캐스팅 안 해주면 에러남
+		Person p = (Person)my2.getData(0);  //(제네릭 안 쓰면)Person타입이 아니라 Object타입이라 다운캐스팅 안 해주면 에러남
+		Person p2 = my2.getData(0);  //Generic 사용시 다운캐스팅 불필요
 	}
 }
