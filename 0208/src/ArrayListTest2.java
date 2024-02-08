@@ -50,7 +50,8 @@ public class ArrayListTest2 {
 		//isEmpty
 		System.out.println(list1.isEmpty());  //리스트가 비어있는지의 여부
 		
-		
+		//toArray
+		Object[] arr = list2.toArray();
 		
 		
 	}
