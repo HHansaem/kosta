@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-class Person {
+class Person implements Comparable<Person> {
 	String name;
 	int age;
 	
@@ -11,6 +11,28 @@ class Person {
 	
 	public String info() {
 		return "이름:" + name  + ", 나이:" + age;
+	}
+	
+	@Override
+	public String toString() {
+		return "이름:" + name  + ", 나이:" + age;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(!(obj instanceof Person)) return false;
+		Person p = (Person) obj;
+		return name.equals(p.name) && age == p.age;
+	}
+	
+	@Override
+	public int hashCode() {
+		return name.hashCode() + age;
+	}
+
+	@Override  //어떤 걸 기준으로 비교할 건지
+	public int compareTo(Person o) {
+		return o.age - age;
 	}
 }
 
