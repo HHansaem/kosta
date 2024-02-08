@@ -1,5 +1,6 @@
 class MyArray <T> {  
-	Object[] datas = new Object[10];
+//	Object[] datas = new Object[10];  //Generic 사용하지 않은 코드
+	T[] datas;  //Generic타입의 배열
 	
 //	void setData(int idx, Object data) {  //Generic 사용하지 않은 코드
 //		datas[idx] = data;
@@ -9,7 +10,11 @@ class MyArray <T> {
 		datas[idx] = data;
 	}
 	
-	Object getData(int idx) {
+//	Object getData(int idx) {  //Generic 사용하지 않은 코드
+//		return datas[idx];
+//	}
+
+	T getData(int idx) {
 		return datas[idx];
 	}
 }
@@ -27,6 +32,6 @@ public class GenericTest1 {
 //		MyArray my2 = new MyArray();
 		MyArray<Person> my2 = new MyArray<>();
 		my2.setData(0, new Person("hong", 20));
-		Person p = (Person)my2.getData(0);  //(제네릭 안 쓰면)Person타입이 아니라 Object타입이라 다운캐스팅 안 해주면 에러남
+		Person p = my2.getData(0);  //(제네릭 안 쓰면)Person타입이 아니라 Object타입이라 다운캐스팅 안 해주면 에러남
 	}
 }
