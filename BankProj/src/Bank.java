@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Scanner;
 
 import emp.Account;
@@ -8,11 +11,8 @@ import exp.BankException;
 public class Bank {
 
 	Scanner sc = new Scanner(System.in);
-	Account[] accs = new Account[100];  //null로 자동 초기화
-	int cnt;  //0으로 자동 초기화
-
-	Bank() {}
-
+	Map<String, Account> accs = new HashMap<>();  //TreeMap으로 해도 됨
+	
 	int menu() throws BankException {
 		System.out.println("\n[코스타 은행]");
 		System.out.println("0.종료");
@@ -54,12 +54,12 @@ public class Bank {
 		System.out.print("등급(VIP, Gold, Silver, Normal): ");
 		String grade = sc.next();
 
-		Account acc = searchAccById(id);
-		if(acc != null) {
+		//key값(id)으로 중복체크
+		if(accs.containsKey(id)) {  //중복이면 true
 			throw new BankException(BankError.DOUBLE_ID);
 		}
-
-		accs[cnt++] = new SpecialAccount(id, name, money, grade);  //upcasting
+		//HashMap에 key값과 value값 넣기
+		accs.put(id, new SpecialAccount(id, name, money, grade));  
 	}
 
 	void makeAccount() throws BankException {
@@ -71,14 +71,12 @@ public class Bank {
 		System.out.print("입금액: ");
 		int money = sc.nextInt();
 
-		Account acc = searchAccById(id);
-		if(acc != null) {
+		//key값(id)으로 중복체크
+		if(accs.containsKey(id)) {  //중복이면 true
 			throw new BankException(BankError.DOUBLE_ID);
 		}
-
-		//1. Account 객체 만들기
-		//2. 생성된 객체를 accs에 담기
-		accs[cnt++] = new Account(id, name, money);
+		//HashMap에 key값과 value값 넣기
+		accs.put(id, new Account(id, name, money));
 	}
 
 	void deposit() throws BankException {
@@ -88,14 +86,14 @@ public class Bank {
 
 		System.out.print("금액을 입력하세요: ");
 		int money = sc.nextInt();
-		Account acc = searchAccById(id);
-
-		if(acc == null) {
+		
+		 //key값(id)이 없으면 해당 예외 발생
+		if(accs.containsKey(id) == false) { 
 			throw new BankException(BankError.NO_ID);
-		} else {
-			acc.balance += money;
-			System.out.println(money + "원이 입금되었습니다.");
 		}
+		//HashMap key값의 value값 money 수정
+		 accs.get(id).deposit(money);
+
 	}
 
 	void withdraw() throws BankException {
@@ -105,43 +103,39 @@ public class Bank {
 
 		System.out.print("출금액: ");
 		int money = sc.nextInt();
-		Account acc = searchAccById(id);
-
-		if(acc == null) {
+		
+		//key값(id)이 없으면 해당 예외 발생
+		if(accs.containsKey(id) == false) { 
 			throw new BankException(BankError.NO_ID);
-		} else {
-			acc.withdraw(money);
 		}
-	}
-
-	Account searchAccById(String id) {
-		for(int i = 0; i < cnt; i++) {
-			if(accs[i].getId().equals(id)) {
-				return accs[i];
-			}
-		}
-		return null;
+		//HashMap key값의 value값 money 수정
+		 accs.get(id).withdraw(money);
 	}
 
 	void accountInfo() throws BankException {
 		System.out.println("\n[계좌조회]");
 		System.out.print("계좌번호: ");
 		String id = sc.next();
-
-		//1. accs에서 id에 해당하는 Account를 찾는다.
-		Account acc = searchAccById(id);
-		//2. 찾은 Account의 정보를 출력한다.
-		if(acc == null) {
+		
+		//key값(id)이 없으면 해당 예외 발생
+		if(accs.containsKey(id) == false) { 
 			throw new BankException(BankError.NO_ID);
-		} else {
-			System.out.println(acc.info());
 		}
+
+		System.out.println(accs.get(id).info());
 	}
 
 	void allAccountInfo() {
 		System.out.println("\n[전체계좌조회]");
-		for(int i = 0; i < cnt; i++) {
-			System.out.println(accs[i].info());
+		
+		//HashMap(accs)에 들어온 모든 값들 만큼 반복문 돌기
+//		for(Account acc : accs.values()) {
+//			System.out.println(acc.info());
+//		}
+		
+		Iterator<Account> it = accs.values().iterator();
+		while (it.hasNext()) {
+			System.out.println(it.next().info());
 		}
 	}
 
@@ -154,19 +148,15 @@ public class Bank {
 		System.out.print("이체금액: ");
 		int money = sc.nextInt();
 
-		Account sendAcc = searchAccById(sendId);
-		if(sendAcc == null) {
+		if(accs.containsKey(sendId) == false) {
+			throw new BankException(BankError.NO_SENDID);
+		} 
+		if(accs.containsKey(recvId) == false) {
 			throw new BankException(BankError.NO_SENDID);
 		} 
 		
-		Account recvAcc = searchAccById(recvId);
-		if(recvAcc == null) {
-			throw new BankException(BankError.NO_RECVID);
-		}
-
-		sendAcc.withdraw(money);
-		recvAcc.deposit(money);
-		System.out.println("이체가 완료되었습니다.");
+		accs.get(sendId).withdraw(money);
+		accs.get(recvId).withdraw(money);
 	}
 
 	public static void main(String[] args) {
