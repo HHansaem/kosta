@@ -1,3 +1,8 @@
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -158,14 +163,95 @@ public class Bank {
 		accs.get(sendId).withdraw(money);
 		accs.get(recvId).withdraw(money);
 	}
+	
+	public void storeAccs() {  //계좌목록 파일로 저장
+		FileOutputStream fos = null;
+		DataOutputStream dos = null;
+		try {
+			fos = new FileOutputStream("accs.bin");
+			dos = new DataOutputStream(fos);
+			
+			dos.writeInt(accs.size());  //1.계좌의 개수 저장
+			for(Account acc : accs.values()) {  //계좌목록만 가져오기
+				if(acc instanceof SpecialAccount) {
+					dos.writeChar('S');  //2.특수계좌 구분자
+					dos.writeUTF(((SpecialAccount)acc).getGrade());  //3.등급
+				} else {
+					dos.writeChar('N');  //일반계좌 구분자
+				}
+				dos.writeUTF(acc.getId());  //4.계좌번호
+				dos.writeUTF(acc.getName());  //5.이름
+				dos.writeInt(acc.getBalance());  //6.잔액
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(dos != null) {
+					dos.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void loadAccs() {  //계좌목록 파일로부터 읽어오기
+		FileInputStream fis = null;
+		DataInputStream dis = null;
+		try {
+			fis = new FileInputStream("accs.bin");
+			dis = new DataInputStream(fis);
+			
+			//1.계좌갯수 읽어오기
+			int size = dis.readInt();
+			char accSect;
+			String id;
+			String name;
+			String grade = null;
+			int balance;
+			
+			for(int i = 0; i < size; i++) {
+				//2.계좌구분 읽어오기(S or N)
+				accSect = dis.readChar();
+				if(accSect == 'S') {
+					grade = dis.readUTF();  //3.특수계좌일 경우 등급
+				}
+				id = dis.readUTF();  //4.계좌번호
+				name = dis.readUTF();  //5.이름
+				balance = dis.readInt();  //6.잔액
+				
+				if(accSect == 'N') {
+					accs.put(id, new Account(id, name, balance));
+				} else {
+					accs.put(id, new SpecialAccount(id, name, balance, grade));
+				}
+			}
+			
+		} catch (IOException e) {
+//			e.printStackTrace();  //개설된 계좌가 없으면 파일이 생성되지 않았기 때문에 해당 예외가 발생하므로 화면에 문구가 안 뜨도록 주석
+		} finally {
+			try {
+				if(dis != null) {
+					dis.close();
+				}
+			} catch(IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
 	public static void main(String[] args) {
 		Bank bank = new Bank();
-		System.out.println("어서오세용");
+		bank.loadAccs();
+		System.out.println("~~~ 어서오세요 ~~~");
 		while(true) {
 			try {
 				int sel = bank.menu();
-				if(sel == 0) break;
+				if(sel == 0) {
+					bank.storeAccs();
+					break;
+				}
 				switch(sel) {
 				case 1: bank.selMenu(); break;
 				case 2: bank.deposit(); break;
