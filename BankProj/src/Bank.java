@@ -169,7 +169,7 @@ public class Bank {
 	}
 	
 	public void storeAccs() {  //계좌목록 파일로 저장
-		FileOutputStream fos = null;
+		FileOutputStream fos = null;  //stream -> byte 기반
 		DataOutputStream dos = null;
 		try {
 			fos = new FileOutputStream("accs.bin");
@@ -262,7 +262,7 @@ public class Bank {
 		BufferedWriter bw = null;  //close하기 위해 try-catch문 밖에 써야 함.
 		
 		try {
-			bw = new BufferedWriter(new FileWriter("accs.txt"));
+			bw = new BufferedWriter(new FileWriter("accs.txt"));  //writer/reader -> 문자열 기반
 
 			for(Account acc : accs.values()) {
 				String accStr = acc.getId();
