@@ -1,7 +1,11 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -240,16 +244,93 @@ public class Bank {
 			}
 		}
 	}
+	
+	public void storeAccs_txt() {
+		//FileWriter, BufferedWriter, accs.txt
+		//1001,홍길동,100000
+		//1002,김길동,200000,VIP
+		//','로 구분지어서 새로운 배열로 만들어 사용 -> split() -> 배열 길이가 3이면 일반계좌, 4면 특수계좌
+		
+		//1.FileWriter, BufferedWriter 선언과 초기화
+		//2.파일명으로 FileWriter 생성
+		//3.생성된 FileWriter로 BufferedWriter 생성
+		//4.계좌의 목록에서 각 계좌를 가져와 각 항목을 ','구분자로 이어 하나의 문자열로 만들기
+		//5.bw를 이용하여 4에서 생성한 문자열 저장
+		//6.라인바꾸기 : br.newLine()
+		//7.예외처리 및 bw close
+		
+		BufferedWriter bw = null;  //close하기 위해 try-catch문 밖에 써야 함.
+		
+		try {
+			bw = new BufferedWriter(new FileWriter("accs.txt"));
+
+			for(Account acc : accs.values()) {
+				String accStr = acc.getId();
+				accStr += "," + acc.getName();
+				accStr += "," + acc.getBalance();
+				if(acc instanceof SpecialAccount) {
+					accStr += "," + ((SpecialAccount)acc).getGrade();
+				}
+				
+				bw.write(accStr);
+				bw.newLine();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(bw != null) {
+					bw.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
+	public void loadAccs_txt() {
+		BufferedReader br = null;
+		try {
+			br = new BufferedReader(new FileReader("accs.txt"));
+			
+			String accStr = null;
+			while((accStr = br.readLine()) != null) {
+				String[] cols = accStr.split(",");  //','구분자로 잘라서 배열에 저장하기
+				String id = cols[0];
+				String name = cols[1];
+				int balance = Integer.parseInt(cols[2]);
+				
+				//구분해서 새로 저장한 배열의 길이에 따라 계좌 구분
+				if(cols.length == 4) {  //특수계좌
+					String grade = cols[3];
+					accs.put(id, new SpecialAccount(id, name, balance, grade));
+				} else {  //일반계좌
+					accs.put(id, new Account(id, name, balance));
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(br != null) {
+					br.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
 	public static void main(String[] args) {
 		Bank bank = new Bank();
-		bank.loadAccs();
+		bank.loadAccs_txt();
 		System.out.println("~~~ 어서오세요 ~~~");
 		while(true) {
 			try {
 				int sel = bank.menu();
 				if(sel == 0) {
-					bank.storeAccs();
+					bank.storeAccs_txt();
 					break;
 				}
 				switch(sel) {

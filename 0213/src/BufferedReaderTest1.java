@@ -9,7 +9,7 @@ public class BufferedReaderTest1 {
 		
 		try {
 			fr = new FileReader("news.txt");
-//			br = new BufferedReader(fr);
+			br = new BufferedReader(fr);
 			
 			String str = null;
 			while((str = br.readLine()) != null) {
