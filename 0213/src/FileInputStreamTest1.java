@@ -31,7 +31,7 @@ public class FileInputStreamTest1 {
 			byte[] buff = new byte[10];
 			int len;
 			
-			//read : 파일에서 최대 buff의 크기만큼 데이터를 읽고, 실제로 읽은 바이트 수를 반환 
+			//read(buff) : 파일에서 최대 buff의 크기만큼 데이터를 읽고, 실제로 읽은 바이트 수를 반환 
 			//(여기선 반복문 10번.. 읽을 데이터가 없으면 -1 반환)
 			while((len = bis.read(buff)) > 0) {  
 				bos.write(buff, 0, len);
@@ -40,8 +40,8 @@ public class FileInputStreamTest1 {
 			e.printStackTrace();
 		} finally {
 			try {
-				if(bis != null) fis.close();
-				if(bos != null) fos.close();
+				if(bis != null) bis.close();
+				if(bos != null) bos.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
