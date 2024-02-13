@@ -20,12 +20,11 @@ public class FileInputStreamTest1 {
 		
 		try {
 			//main의 파라미터로 받아서 사용 (프로젝트 우클릭 -> Run as -> Run Configuration -> Argument)
-			fis = new FileInputStream(readFile);  
-			fos = new FileOutputStream(writeFile);
-//			fis = new FileInputStream("news.txt");  //파일에서 byte단위의 데이터 읽어오기
-//			fos = new FileOutputStream("news2.txt");  //파일에 byte단위의 데이터 생성 후 저장
+//			fis = new FileInputStream(readFile);  
+//			fos = new FileOutputStream(writeFile);
+			fis = new FileInputStream("news.txt");  //파일에서 byte단위의 데이터 읽어오기
+			fos = new FileOutputStream("news2.txt");  //파일에 byte단위의 데이터 생성 후 저장
 			
-//			뭐냐 진짜 왜 안 뜸? 
 			bis = new BufferedInputStream(fis);
 			bos = new BufferedOutputStream(fos);
 			
