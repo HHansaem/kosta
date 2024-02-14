@@ -7,6 +7,8 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -321,16 +323,61 @@ public class Bank {
 			}
 		}
 	}
+	
+	public void storeAcc_ser() {  //직렬화로 저장하기
+		//Map<String, Account> accs = new HashMap<>();
+		//여기서 HashMap, String은 이미 Serializable를 implements하고 있음.
+		//우리가 만든 Account, SpecialAccount는 Serializable를 implements해줘야 함.
+		ObjectOutputStream oos = null;
+		
+		try {
+			oos = new ObjectOutputStream(new FileOutputStream("accs.ser"));
+			oos.writeObject(accs);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(oos != null) {
+					oos.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void loadAcc_ser() {
+		ObjectInputStream ois = null;
+		
+		try {
+			ois = new ObjectInputStream(new FileInputStream("accs.ser"));
+			accs = (Map<String, Account>) ois.readObject();
+			
+		} catch (IOException e) {
+//			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(ois != null) {
+					ois.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
 	public static void main(String[] args) {
 		Bank bank = new Bank();
-		bank.loadAccs_txt();
+		bank.loadAcc_ser();
 		System.out.println("~~~ 어서오세요 ~~~");
 		while(true) {
 			try {
 				int sel = bank.menu();
 				if(sel == 0) {
-					bank.storeAccs_txt();
+					bank.storeAcc_ser();
 					break;
 				}
 				switch(sel) {

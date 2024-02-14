@@ -1,10 +1,13 @@
 package emp;
+
+import java.io.Serializable;
+
 //	** SpecialAccount
 //	1. Account의 모든 속성과 기능을 가지고 있음.
 //	2. 등급(grade)에 따라 입금시마다 입금액의 특정 퍼센트 만큼 입금을 추가해 줌.
 //	 (grade: VIP(4%), Gold(3%), Silver(2%), Normal(1%))
 
-public class SpecialAccount extends Account {
+public class SpecialAccount extends Account implements Serializable {
 	
 	String grade;
 	
