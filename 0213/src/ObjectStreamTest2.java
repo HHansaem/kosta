@@ -18,7 +18,9 @@ public class ObjectStreamTest2 {
 //			}
 			
 			ArrayList<Person> pers = (ArrayList<Person>) ois.readObject();
-			System.out.println(pers);
+			for(Person p : pers) {
+				System.out.println(p);
+			}
 			
 		} catch (IOException e) {
 			e.printStackTrace();
