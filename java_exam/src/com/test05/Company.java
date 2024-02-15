@@ -27,11 +27,14 @@ public class Company {
 		System.out.println("name\t department\t salary   tax");
 		System.out.println("----------------------------------");
 		for(Employee emp : map.values()) {  //value값
-			if(emp instanceof Secretary) {
-				((Secretary) emp).incentive(100);
-			} else if(emp instanceof Sales) {
-				((Sales) emp).incentive(100);
+			if(emp instanceof Bonus) {
+				((Bonus) emp).incentive(100);
 			}
+//			if(emp instanceof Secretary) {
+//				((Secretary) emp).incentive(100);
+//			} else if(emp instanceof Sales) {
+//				((Sales) emp).incentive(100);
+//			}
 			System.out.printf("%4s  %10s  %10d  %7.2f\n"
 					, emp.getName(),emp.getDepartment(),emp.getSalary(),emp.tax());
 		}
