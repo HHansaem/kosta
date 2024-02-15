@@ -10,13 +10,9 @@ import com.test06.entity.Juice;
 
 public class VendingMachineTest {
 
-	VendingMachineBiz vending = new VendingMachineBiz();
-	Scanner sc = new Scanner(System.in);
-	
-	public void printMenu() {
-		while(true) {
+	private static void printMenu() {
 
-			System.out.println("===========================");
+			System.out.println("\n===========================");
 			System.out.println("[음료수 자판기 관리 시스템]");
 			System.out.println("1.전체 음료수 및 잔액 보기");
 			System.out.println("2.주스 구입하기 ( 200원 )");
@@ -26,40 +22,39 @@ public class VendingMachineTest {
 			System.out.println("9.종료");
 			System.out.println("\n===========================");
 			System.out.print("메뉴 입력 => ");
-			int choice = sc.nextInt();
-			
-			if(choice == 9) {
-				System.out.println("시스템을 종료합니다.");
-				break;
-			}
-			Drink[] drinkList = new Drink[3];
-			drinkList[0] = new Coffee();
-			drinkList[1] = new Coke();
-			drinkList[2] = new Juice();
-
-			switch (choice) {
-			case 1:
-				vending.printDrinkList(drinkList);
-				break;
-			case 2:
-				vending.cartDrink(drinkList[2]);
-				break;
-			case 3:
-				vending.cartDrink(drinkList[0]);
-				break;
-			case 4:
-				vending.cartDrink(drinkList[1]);
-				break;
-			case 5:
-				vending.printCart();
-				break;
-			}
-
-		}
 	}
 
 	public static void main(String[] args) {
-		VendingMachineTest main = new VendingMachineTest();
-		main.printMenu();
+		Scanner sc = new Scanner(System.in);
+		Drink[] drinkList = {new Coffee(), new Juice(), new Coke()};
+		
+		VendingMachineBiz biz = new VendingMachineBiz();
+		while(true) {
+			printMenu();
+			String choice = sc.nextLine();
+			switch (choice) {
+			case "1":
+				biz.printDrinkList(drinkList);
+				break;
+			case "2":
+				biz.cartDrink(new Juice());
+				break;
+			case "3":
+				biz.cartDrink(new Coffee());
+				break;
+			case "4":
+				biz.cartDrink(new Coke());
+				break;
+			case "5":
+				biz.printCart();
+				break;
+			case "9":
+				System.out.println("프로그램을 종료합니다.");
+				System.exit(0);
+			default : 
+				System.out.println("메뉴를 잘못 입력하셨습니다.");
+				break;
+			}
+		}
 	}
 }
