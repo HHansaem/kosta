@@ -1,7 +1,5 @@
 package com.test06.biz;
 
-import java.util.Scanner;
-
 import com.test06.entity.Drink;
 
 public class VendingMachineBiz implements IVendingMachineBiz {
@@ -43,7 +41,6 @@ public class VendingMachineBiz implements IVendingMachineBiz {
 				cokeCnt++;
 			}
 		}
-		
 		System.out.println("주스 : " + juiceCnt + " 개");
 		System.out.println("커피 : " + coffeeCnt + " 개");
 		System.out.println("코크 : " + cokeCnt + " 개");

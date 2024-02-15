@@ -8,10 +8,6 @@ public class Juice extends Drink {
 		super.setPrice(JUICE_PRICE);
 	}
 	
-	public static String getName() {
-		return name;
-	}
-	
 	@Override
 	public String toString() {
 		return "주스      " + JUICE_PRICE + "원";

@@ -9,10 +9,6 @@ public class Coffee extends Drink {
 		super.setPrice(COFFEE_PRICE);
 	}
 	
-	public static String getName() {
-		return name;
-	}
-
 	@Override
 	public String toString() {
 		return "커피      " + COFFEE_PRICE + "원";
