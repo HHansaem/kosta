@@ -10,11 +10,11 @@ public class Sales extends Employee implements Bonus {
 	
 	@Override
 	public double tax() {
-		return this.getSalary() * 0.13;
+		return getSalary() * 0.13;
 	}
 	
 	@Override
 	public void incentive(int pay) {
-		setSalary((int)(pay * 1.2));
+		setSalary(getSalary() + (int)(pay * 1.2));
 	}
 }

@@ -16,9 +16,9 @@ public class Company {
 		// 모든 객체의 기본 정보를 출력한다. ( for문 이용 , keySet() 이용 )
 		System.out.println("name\t department\t salary");
 		System.out.println("----------------------------------");
-		for(Integer e : map.keySet()) {  //key값
-			Employee emp = map.get(e);  //value값
-			System.out.printf("%4s   %10s   %10d\n", emp.getName(),emp.getDepartment(),emp.getSalary());
+		for(Integer key : map.keySet()) {  //key값
+			Employee emp = map.get(key);  //value값
+			System.out.printf("%4s  %10s  %10d\n", emp.getName(),emp.getDepartment(),emp.getSalary());
 		}
 		
 		// 모든 객체의 인센티브 100씩 지급한다.
@@ -26,14 +26,13 @@ public class Company {
 		System.out.println("\n인센티브 100지급\n");
 		System.out.println("name\t department\t salary   tax");
 		System.out.println("----------------------------------");
-		for(Integer e : map.keySet()) {  //key값
-			Employee emp = map.get(e);  //value값
+		for(Employee emp : map.values()) {  //value값
 			if(emp instanceof Secretary) {
 				((Secretary) emp).incentive(100);
 			} else if(emp instanceof Sales) {
 				((Sales) emp).incentive(100);
 			}
-			System.out.printf("%4s   %10s   %10d    %.2f\n"
+			System.out.printf("%4s  %10s  %10d  %7.2f\n"
 					, emp.getName(),emp.getDepartment(),emp.getSalary(),emp.tax());
 		}
 
