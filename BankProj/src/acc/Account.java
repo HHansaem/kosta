@@ -1,4 +1,4 @@
-package emp;
+package acc;
 
 import java.io.Serializable;
 
@@ -56,8 +56,9 @@ public class Account implements Serializable {
 		this.balance = balance;
 	}
 	
-	public void deposit(int money) {
-		if(money > 0) balance += money;
+	public void deposit(int money) throws BankException {
+		if(money <= 0) throw new BankException(BankError.DEPOSIT);
+		balance += money;
 	}
 	
 	public void withdraw(int money) throws BankException {
@@ -67,26 +68,14 @@ public class Account implements Serializable {
 		balance -= money;
 	}
 	
-	public String info() {
-//		return "계좌번호:" + id + ", 이름:" + name + ", 잔액:" + balance; 
+	//deposit을 그대로 쓰면 입금될 때 SpacialAccount는 이자가 붙어서 입급되니까(오버라이드) 메서드를 따로 만들어 준 것  
+	public void transDeposit(int money) throws BankException {
+		if(money <= 0) throw new BankException(BankError.DEPOSIT);
+		balance += money;
+	}
+	
+	@Override
+	public String toString() {
 		return String.format("계좌번호:%s, 이름:%s, 잔액:%d", id, name, balance); 
 	}
-//	
-//	public static void main(String[] args) {
-//		Account acc1 = new Account();
-//		acc1.id = "1002";
-//		acc1.name = "김길동";
-//		acc1.balance = 200000;
-//		Account acc2 = new Account("1001", "홍길동", 100000);
-//		Account acc3 = new Account("1003", "강길동");
-//		
-//		System.out.println(acc1.info());
-//		acc1.deposit(10000);
-//		System.out.println(acc1.info());
-//		acc1.withdraw(5000);
-//		System.out.println(acc1.info());
-//	}
 }
-//계좌번호:1002, 이름:김길동, 잔액:200000
-//계좌번호:1002, 이름:김길동, 잔액:210000
-//계좌번호:1002, 이름:김길동, 잔액:205000

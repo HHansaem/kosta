@@ -1,6 +1,8 @@
-package emp;
+package acc;
 
 import java.io.Serializable;
+
+import exp.BankException;
 
 //	** SpecialAccount
 //	1. Account의 모든 속성과 기능을 가지고 있음.
@@ -17,12 +19,12 @@ public class SpecialAccount extends Account implements Serializable {
 	}
 	
 	@Override
-	public String info() {
-		return super.info() + ", 등급:" + grade;
+	public String toString() {
+		return super.toString() + ", 등급:" + grade;
 	}
 	
 	@Override
-	public void deposit(int money) {
+	public void deposit(int money) throws BankException {
 		double rate = 0;
 		switch (grade.toUpperCase()) {  //grade값을 모두 대문자로 바꾸기
 		case "VIP": rate = 0.04; break;
@@ -31,20 +33,6 @@ public class SpecialAccount extends Account implements Serializable {
 		case "NORMAL": rate = 0.04; break;
 		}
 		super.deposit(money + (int)(money * rate));
-		
-		//내가 작성한 코드
-//		if(money > 0) {
-//			balance += money;
-//			if(grade.equals("VIP")) {
-//				balance += (money * 0.04);
-//			} else if(grade.equals("Gold")) {
-//				balance += (money * 0.03);
-//			} else if(grade.equals("Silver")) {
-//				balance += (money * 0.02);
-//			} else if(grade.equals("Normal")) {
-//				balance += (money * 0.01);
-//			}
-//		}
 	}
 	
 	public String getGrade() {
@@ -54,17 +42,4 @@ public class SpecialAccount extends Account implements Serializable {
 	public void setGrade(String grade) {
 		this.grade = grade;
 	}
-
-//	public static void main(String[] args) {
-//		SpecialAccount sacc = new SpecialAccount("1001", "홍길동", 100000, "vip");
-//		System.out.println(sacc.info());
-//		sacc.deposit(10000);
-//		System.out.println(sacc.info());
-//		sacc.withdraw(5000);
-//		System.out.println(sacc.info());
-//	}
 }
-
-//계좌번호:1001, 이름:홍길동, 잔액:100000, 등급:VIP
-//계좌번호:1001, 이름:홍길동, 잔액:110400, 등급:VIP
-//계좌번호:1001, 이름:홍길동, 잔액:105400, 등급:VIP
