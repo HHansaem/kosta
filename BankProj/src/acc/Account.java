@@ -64,7 +64,7 @@ public class Account implements Serializable {
 	public void withdraw(int money) throws BankException {
 		if(money > balance) {
 			throw new BankException(BankError.OVERDRAWN);
-		}
+		} 
 		balance -= money;
 	}
 	
